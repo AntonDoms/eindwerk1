@@ -5,6 +5,7 @@ import Home from './components/Home';
 import Admin from './components/Admin';
 import Account from './components/Account';
 import Cart from './components/Cart';
+import Checkout from './components/Checkout';
 import { Route, Routes, Link } from 'react-router-dom';
 
 
@@ -16,6 +17,7 @@ function App() {
           <Route path='/signin' element={<Signin />} />
           <Route path='/signup' element={<Signup />} />
           <Route path='/account' element={<Account />} />
+          <Route path='/checkout' element={<Checkout />} />
         </Routes>
   );
 }
