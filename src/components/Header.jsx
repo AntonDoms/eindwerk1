@@ -44,11 +44,18 @@ function Header() {
                         Account
                     </Link>
                   }
-                  <div className='content-center mx-auto '>
+                  <div className='content-center mx-auto space-x-5 '>
                     <Link to='/' className='text-black no-underline'>
                           Home
                     </Link>
+                    <Link to='/ceramics' className='text-black no-underline'>
+                          Ceramics
+                    </Link>
+                    <Link to='/extra' className='text-black no-underline'>
+                          Extra
+                    </Link>
                   </div>
+                  
                 </div>
                 
             </div>

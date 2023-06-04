@@ -9,3 +9,6 @@ body{
 button{
    color: #131516;
 }
+button:hover{
+    background-color: #6a7981;
+ }

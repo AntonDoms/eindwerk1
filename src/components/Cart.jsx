@@ -1,5 +1,6 @@
 import React from "react";
 import db from "../firebase";
+import {Link} from 'react-router-dom';
 import { useEffect, useState, createContext } from "react";
 import {
   QuerySnapshot,
@@ -10,7 +11,7 @@ import {
   updateDoc,
   increment,
 } from "firebase/firestore";
-import CheckoutForm from "./CheckoutForm";
+
 
 function Cart() {
   const [producten, setProducten] = useState([]);
@@ -110,9 +111,10 @@ function Cart() {
           </button>
         </div>
       ))}
-
       <div>€ {total()}</div>
-      <CheckoutForm />
+      <Link to='/checkout' className='text-black no-underline'>
+          <button>checkout</button>
+      </Link>
     </>
   );
 }

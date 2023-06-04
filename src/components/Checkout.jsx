@@ -109,7 +109,7 @@ function Checkout() {
             />
           </div>
 
-          <button className="bg-indigo-500 text-sm text-white px-3 py-1.5 font-medium rounded-md">
+          <button className="bg-gray-800 text-sm text-white px-3 py-1.5 font-medium rounded-md">
             Checkout
           </button>
         </form>

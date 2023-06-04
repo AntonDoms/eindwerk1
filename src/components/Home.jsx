@@ -2,13 +2,13 @@ import React from 'react';
 import Header from './Header';
 import db from "../firebase";
 import { useEffect, useState } from 'react';
-import { collection, onSnapshot, addDoc , doc, setDoc, deleteDoc} from 'firebase/firestore';
+import { collection, onSnapshot, addDoc , doc, setDoc, deleteDoc, where} from 'firebase/firestore';
 
 
 function Home() {
      const [producten, setProducten] = useState([])
      const [cart, setCart] = useState([])
-  const [products, setProducts] = useState([])
+    const [products, setProducts] = useState([])
 
      
     useEffect(
@@ -61,7 +61,7 @@ function Home() {
             <div className='grid grid-cols-auto items-center justify-center'> 
                 <div class="bg-white rounded-lg shadow-md overflow-hidden m-3 w-80 ">
                 <div class=" flex items-center justify-center h-64 ">
-                    <img src={producten.fotoURL} alt="" className='w-1/4'/>
+                    <img src={producten.fotoURL} alt="" className='w-1/2'/>
                 </div>
                 <div className='grid-cols-auto'>
                   <div class="px-4 py-2">
