@@ -1,6 +1,6 @@
 import React from "react";
 import db from "../firebase";
-import {Link} from 'react-router-dom';
+import { Link } from "react-router-dom";
 import { useEffect, useState, createContext } from "react";
 import {
   QuerySnapshot,
@@ -11,7 +11,6 @@ import {
   updateDoc,
   increment,
 } from "firebase/firestore";
-
 
 function Cart() {
   const [producten, setProducten] = useState([]);
@@ -71,7 +70,8 @@ function Cart() {
     cart.map((i) => {
       x += i.prijs * i.aantal;
     });
-    return x;
+    let total = Math.round((x + Number.EPSILON) * 100) / 100;
+    return total;
   }
 
   return (
@@ -112,8 +112,8 @@ function Cart() {
         </div>
       ))}
       <div>€ {total()}</div>
-      <Link to='/checkout' className='text-black no-underline'>
-          <button>checkout</button>
+      <Link to="/checkout" className="text-black no-underline">
+        <button>checkout</button>
       </Link>
     </>
   );

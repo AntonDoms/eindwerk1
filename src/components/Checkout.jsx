@@ -36,7 +36,7 @@ function Checkout() {
         <form className="flex flex-col gap-2 w-[350px]" onSubmit={submit}>
           {alert && (
             <div className="w-full text-center bg-green-500 font-bold px-4 py-2 rounded-md text-white">
-              Successfully checked out, check your email for confirmation
+              Successfully checked out
             </div>
           )}
           <div>
@@ -95,7 +95,7 @@ function Checkout() {
 
           <div>
             <label htmlFor="name" className="text-sm">
-              Name on card
+              Name
             </label>
             <input
               onChange={(event) => {
