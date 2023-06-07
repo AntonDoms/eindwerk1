@@ -1,25 +1,22 @@
 import { useState } from "react";
 import Header from "./Header";
 import emailjs from "@emailjs/browser";
+import { useAuth} from '../firebase';
 
 function Checkout() {
   const [alert, setAlert] = useState(false);
   const [name, setName] = useState("");
+  const currentUser = useAuth();
+  console.log(currentUser?.email);
 
   const submit = (e) => {
     e.preventDefault();
-    // emailjs.send(
-    //   "service_dtpzbdj",
-    //   "template_tc2qjrj",
-    //   "test",
-    //   "pVC5a0Q2RURUnXxoO"
-    // );
     emailjs.send(
       "service_dtpzbdj",
       "template_tc2qjrj",
       {
         from_name: "Jack&June",
-        to_name: name,
+        to_name: currentUser?.email,
       },
       "pVC5a0Q2RURUnXxoO"
     );
@@ -39,25 +36,14 @@ function Checkout() {
               Successfully checked out
             </div>
           )}
-          <div>
-            <label htmlFor="email" className="text-sm">
-              Email
-            </label>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              className="border-gray-300 px-2 py-1 block border rounded-md w-full"
-              required
-            />
-          </div>
+          
 
           <div>
             <label htmlFor="cardNumber" className="text-sm">
               Card number
             </label>
             <input
-              type="text"
+              type="number"
               name="cardNumber"
               id="cardNumber"
               className="border-gray-300 px-2 py-1 block border rounded-md w-full"
@@ -88,22 +74,6 @@ function Checkout() {
               id="cvc"
               max={3}
               min={3}
-              className="border-gray-300 px-2 py-1 block border rounded-md w-full"
-              required
-            />
-          </div>
-
-          <div>
-            <label htmlFor="name" className="text-sm">
-              Name
-            </label>
-            <input
-              onChange={(event) => {
-                setName(event.target.value);
-              }}
-              type="text"
-              name="name"
-              id="name"
               className="border-gray-300 px-2 py-1 block border rounded-md w-full"
               required
             />

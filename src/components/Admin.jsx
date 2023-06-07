@@ -98,13 +98,23 @@ function Admin() {
   };
 
   const wijzigCeramic = async (id) => {
+    const naam = prompt("geef een naam: ");
+    const besch = prompt("geef een besch: ");
+    const prijs = prompt("geef een prijs: ");
+    const fotoURL = prompt("geef een foto link: ");
+
     const docRef = doc(db, "keramiek", id);
-    const payload = { naam, besch, prijs };
+    const payload = { naam, besch, prijs, fotoURL };
 
     setDoc(docRef, payload);
   };
 
   const wijzigExtra = async (id) => {
+    const naam = prompt("geef een naam: ");
+    const besch = prompt("geef een besch: ");
+    const prijs = prompt("geef een prijs: ");
+    const fotoURL = prompt("geef een foto link: ");
+
     const docRef = doc(db, "extra", id);
     const payload = { naam, besch, prijs };
 
@@ -152,9 +162,9 @@ function Admin() {
   };
 
   return (
-    <div className=" justify-center">
+    <div className="justify-center">
       <Header />
-
+    
       <button
         onClick={newCeramic}
         className="px-3 py-1 bg-gray-800 text-white text-sm font-semibold rounded m-2"
@@ -173,59 +183,90 @@ function Admin() {
       >
         delete by name
       </button>
+    
       <div className="grid place-items-center text-4xl">Admin</div>
+    
       <div className="grid place-items-center text-3xl mt-5">Ceramics</div>
-      <ul className="text-center mt-20  items-center justify-center h-64 grid grid-cols-10">
-        {keramiek.map((producten) => (
-          <li className=" p-3 border items-center w-100 h-100 ">
-            <img
-              className="w-1/6 mx-auto"
-              src={producten.fotoURL}
-              alt="geen foto"
-            />{" "}
-            NAAM: {producten.naam} <br /> <br /> PRIJS: € {producten.prijs}{" "}
-            <br />
-            <button
-              onClick={() => wijzigCeramic(producten.id)}
-              className="px-3 py-1 bg-gray-800 text-white text-sm font-semibold rounded m-3"
-            >
-              wijzig
-            </button>
-            <button
-              onClick={() => deleteCeramic(producten.id)}
-              className="px-3 py-1 bg-gray-800 text-white text-sm font-semibold rounded"
-            >
-              verwijder
-            </button>
-          </li>
-        ))}
-      </ul>
+      <table className="mt-10 mx-auto w-full">
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>NAME</th>
+            <th>PRICE</th>
+            <th>ACTION</th>
+          </tr>
+        </thead>
+        <tbody>
+          {keramiek.map((producten) => (
+            <tr key={producten.id}>
+              <td className="p-2">
+                <img
+                  className="w-16 mx-auto"
+                  src={producten.fotoURL}
+                  alt="geen foto"
+                />
+              </td>
+              <td className="p-2">{producten.naam}</td>
+              <td className="p-2">€ {producten.prijs}</td>
+              <td className="p-2">
+                <button
+                  onClick={() => wijzigCeramic(producten.id)}
+                  className="px-3 py-1 bg-gray-800 text-white text-sm font-semibold rounded m-3"
+                >
+                  edit
+                </button>
+                <button
+                  onClick={() => deleteCeramic(producten.id)}
+                  className="px-3 py-1 bg-gray-800 text-white text-sm font-semibold rounded"
+                >
+                  delete
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    
       <div className="grid place-items-center text-3xl mt-20">Extra</div>
-      <ul className="text-center mt-20  items-center justify-center h-64 grid grid-cols-10">
-        {extra.map((producten) => (
-          <li className=" p-3 border items-center w-100 h-100 ">
-            <img
-              className="w-1/6 mx-auto"
-              src={producten.fotoURL}
-              alt="geen foto"
-            />{" "}
-            NAAM: {producten.naam} <br /> <br /> PRIJS: € {producten.prijs}{" "}
-            <br />
-            <button
-              onClick={() => wijzigExtra(producten.id)}
-              className="px-3 py-1 bg-gray-800 text-white text-sm font-semibold rounded m-3"
-            >
-              wijzig
-            </button>
-            <button
-              onClick={() => deleteExtra(producten.id)}
-              className="px-3 py-1 bg-gray-800 text-white text-sm font-semibold rounded"
-            >
-              verwijder
-            </button>
-          </li>
-        ))}
-      </ul>
+      <table className="mt-10 mx-auto w-full">
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>NAME</th>
+            <th>PRICE</th>
+            <th>ACTION</th>
+          </tr>
+        </thead>
+        <tbody>
+          {extra.map((producten) => (
+            <tr key={producten.id}>
+              <td className="p-2">
+                <img
+                  className="w-16 mx-auto"
+                  src={producten.fotoURL}
+                  alt="geen foto"
+                />
+              </td>
+              <td className="p-2">{producten.naam}</td>
+              <td className="p-2">€ {producten.prijs}</td>
+              <td className="p-2">
+                <button
+                  onClick={() => wijzigExtra(producten.id)}
+                  className="px-3 py-1 bg-gray-800 text-white text-sm font-semibold rounded m-3"
+                >
+                  edit
+                </button>
+                <button
+                  onClick={() => deleteExtra(producten.id)}
+                  className="px-3 py-1 bg-gray-800 text-white text-sm font-semibold rounded"
+                >
+                  delete
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }

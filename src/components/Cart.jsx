@@ -85,8 +85,9 @@ function Cart() {
           />
           <h2 class="text-lg font-bold">{cart.naam}</h2>
           <p class="text-gray-500">${cart.prijs}</p>
-
+          
           <div class="flex ">
+          {cart.voorraad-1 >= cart.aantal && (
             <button
               class="px-1 py-1 bg-gray-800 text-white rounded"
               onClick={() => increase(cart)}
@@ -94,6 +95,7 @@ function Cart() {
               {" "}
               ↑{" "}
             </button>
+            )}
             <div class="flex items-center m-0 p-0">{cart.aantal} </div>
             <button
               class="px-1 py-1 bg-gray-800 text-white rounded"
